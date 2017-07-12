@@ -1,13 +1,11 @@
 var express = require('express');
 var app = express();
 var chalk = require('chalk');
+var morgan = require('morgan');
 
 var port = 3000 || process.env.PORT;
 
-app.use(function(req, res, next){
-	console.log( chalk.green(`Time: ${Date()} ${req.method} '${req.originalUrl}'`));
-	next();	
-})
+app.use(morgan('combined'));
 
 app.get('/', function(req, res, next){
 	res.send('hello')
