@@ -12,18 +12,26 @@
       100 followers
     </div>
     <div class="col-md-9">
+
     	{% if showForm %}
-			  <form action="/tweets" method="POST">
-			    <label for="name_field">Name:</label>
-			    <input name="name" type="text" id="name_field" />
+  	    <div class='well'>
+				  <form action="/tweets" method="POST">
+				    <label for="name_field">Name:</label>
+				    {% if defaultName %}
+				    <input name="name" value="{{tweets[0].name}}" type="text" id="name_field" />
+				    {% else %}
+				    <input name="name" type="text" id="name_field" />
+				    {% endif %}
 
-			    <label for="text_field">Text:</label>
-			    <input name="text" type="text" id="text_field" style="width: 350px;" />
+				    <label for="text_field">Text:</label>
+				    <input name="text" type="text" id="text_field" style="width: 350px;" />
 
-			    <input type="submit" value="Submit" />
-			  </form>
+				    <input type="submit" value="Submit" />
+				  </form>			  
+    		</div>
 			{% endif %}
-    	<ul class=list-group>
+
+   	<ul class=list-group>
 	      {% for tweet in tweets %}
 	        <li class=list-group-item>
 	              <img src="http://www.people.fas.harvard.edu/~banaji/people/labmembers/Pictures%20of%20Old%20Lab/Dolly%20Cut.jpg"><br>

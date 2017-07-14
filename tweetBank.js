@@ -6,7 +6,6 @@ function add (name, content) {
 	if (data.length > 0){
 		var id = data.reduce(function(memo, obj){
 		if (memo <= obj.id) {
-			console.log('obj, memo = ', obj, memo)
 			return memo = obj.id;	
 		}
 	},0) + 1

@@ -3,6 +3,7 @@ var chalk = require('chalk');
 var morgan = require('morgan');
 var nunjucks = require('nunjucks');
 const routes = require('./routes');
+const bodyParser = require('body-parser');
 
 var app = express();
 
@@ -18,6 +19,9 @@ app.engine('html', nunjucks.render);
 nunjucks.configure('views', {noCache: true });
 
 app.use(morgan('combined'));
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use('/', routes);
 
