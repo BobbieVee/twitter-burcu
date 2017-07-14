@@ -3,7 +3,18 @@ const _ = require('lodash');
 let data = [];
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+	if (data.length > 0){
+		var id = data.reduce(function(memo, obj){
+		if (memo <= obj.id) {
+			console.log('obj, memo = ', obj, memo)
+			return memo = obj.id;	
+		}
+	},0) + 1
+	
+	} else {
+		id = 0;
+	}
+  		data.push({ id: id, name: name, content: content });	
 }
 
 function list () {
@@ -36,8 +47,9 @@ for (let i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-	// add('Joe Blow', "hello there");
-	// add('Crispy creme', 'Heart attack ')
+	add('Joe Blow', "hello there");
+	add('Joe Blow', "good bye");
+	add('Crispy creme', 'Heart attack ')
 	// console.log('list  = ', list());
 
 	// console.log('looking for crispy - ', find({name: "Crispy creme"}));
